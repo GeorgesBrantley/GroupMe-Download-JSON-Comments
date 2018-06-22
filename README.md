@@ -18,13 +18,16 @@ This data is stored in newComs.txt
 
 ## Infofile.txt Format Below:
 
+~~~~~~~~~~~
 [Personal Auth Token]
 [GroupID]
 [ID of last comment, optional]
-~~~~~~~~~~~~~
+~~~~~~~~~~~
+
 The ID of the last comment allows the user to input the id of a comment that they wish pullbot 2000 to stop downloading on. This space will be filled automatically when Pullbot is ran. This allows the user to run this script again, and only download new comments. See arguments to make sure new comments do not overwrite old ones
 
 ## Arguments
+
 -h : Pull up help menu, doesn't run process
 
 -a : Ignore Last Comment information in infofile.txt, meaning PullBot 2000 will pull all comments associated with selected GroupMe
