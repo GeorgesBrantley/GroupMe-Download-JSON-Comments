@@ -12,8 +12,11 @@ python2.7
 ## Operation
 
 Input your information into infofile.txt
+
 remove 'LAST COMMENT' from infofile.txt
+
 A simple run of pullbot (python2.7) will download all your comments into JSON format.
+
 This data is stored in newComs.txt
 
 ## Infofile.txt Format Below:
@@ -38,5 +41,7 @@ The ID of the last comment allows the user to input the id of a comment that the
 ## SPLUNK USE
 
 Add a monitor or a batch on newComs.txt in this directory
+
 Add a 'chron' job for Pullbot 2000, run at in interval you see fit.
+
 Pullbot 2000 will periodically populate your Splunk with data, and thanks to the 'created_at' field, the timestampes will be mostly right. 
