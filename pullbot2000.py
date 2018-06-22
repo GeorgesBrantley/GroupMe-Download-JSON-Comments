@@ -27,7 +27,13 @@ def getInfo():
     content = [x.strip() for x in content]
     AUTH = content[0]
     GROUPID = content[1]
-    LASTCOM = content[2]
+    
+    # arg check, if a is in the arguments, then ignore the 'lastcomment' 
+    # and fetch all comments!!
+    if len(sys.argv) > 1 and 'a' in sys.argv[1]:
+        LASTCOM = ''
+    else:
+        LASTCOM = content[2]
 
     #print stuff
     print "AUTH TOKEN: " + AUTH
@@ -36,6 +42,14 @@ def getInfo():
 
 if __name__ == '__main__':
 
+    if len(sys.argv) > 1 and 'h' in sys.argv[1]:
+        print 'ARGUMENTS: \n\
+                h : Help Screen\n\
+                x : Do not erase old Comments when downloading new ones\n\
+                a : Download all comments, not just the new ones\n'
+        sys.exit(1)
+
+    print "PULLBOT 2000 ACTIVATED\n"
     print "GETTING COMMENTS"
     getInfo()
 
@@ -50,7 +64,12 @@ if __name__ == '__main__':
     flag = True
     beforeID = "" # allows us to download a lot if behind
     firstID = ''
-    jsondump = open(COMMENTSFILE,"w")
+
+    # argument check, if x is present, it will not overwrite previous commands
+    if len(sys.argv) > 1 and 'x' in sys.argv[1]:
+        jsondump = open(COMMENTSFILE,"a")
+    else:
+        jsondump = open(COMMENTSFILE,"w")
     newComsNum = 0
 
     print "Downloading New Comments"
@@ -80,7 +99,7 @@ if __name__ == '__main__':
                 break;
 
     # jsondump file now has updated comments
-    print "Downloading Stoped! " + str(newComsNum) + " New Comments Downloaded"
+    print "\nDownloading Stoped! " + str(newComsNum) + " New Comments Downloaded\n"
     # update LASTCOM
     LASTCOM = firstID
 
